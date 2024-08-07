@@ -23,9 +23,10 @@ server.use(jsonServer.rewriter({
     '/api/*': '/$1',
     '/blog/:resource/:id/show': '/:resource/:id'
 }))
+
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`JSON Server is running on port ${port}`);
 });
-// Export the Server API
-module.exports = server
+
+
