@@ -6,7 +6,7 @@ const path = require('path');
 const server = jsonServer.create();
 
 // Comment out to allow write operations
-const router = jsonServer.router(path.join(__dirname, 'db.json'))
+const router = jsonServer.router({})
 
 const middlewares = jsonServer.defaults()
 const corsOptions = {
@@ -19,10 +19,6 @@ const corsOptions = {
 
 server.use(middlewares)
 // Add this before server.use(router)
-server.use(jsonServer.rewriter({
-    '/api/*': '/$1',
-    '/blog/:resource/:id/show': '/:resource/:id'
-}))
 server.use(router);
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
